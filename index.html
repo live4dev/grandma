@@ -32,6 +32,43 @@
   .dc-split--photo-first { grid-template-columns: 280px 1fr; }
   .dc-gallery-grid { grid-template-columns:1.15fr 0.85fr; gap:32px; }
 
+  .dc-hero-media { cursor: pointer; }
+  .dc-play-hint {
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;
+    pointer-events:none;
+    background: linear-gradient(180deg, rgba(20,16,10,0) 55%, rgba(20,16,10,0.32) 100%);
+    opacity:1;
+    transition: opacity .3s ease;
+  }
+  .dc-hero-media.is-playing .dc-play-hint { opacity: 0; }
+  .dc-play-circle {
+    width:60px; height:60px; border-radius:50%;
+    background: rgba(36,31,25,0.42);
+    border: 1px solid rgba(243,234,216,0.55);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 10px 26px rgba(20,16,10,0.35);
+    transition: transform .3s ease;
+  }
+  .dc-hero-media:hover .dc-play-circle { transform: scale(1.08); }
+  .dc-play-circle::after {
+    content:'';
+    width:0; height:0;
+    border-style:solid;
+    border-width:9px 0 9px 15px;
+    border-color: transparent transparent transparent #f3ead8;
+    margin-left:4px;
+  }
+  .dc-play-label {
+    font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#f3ead8;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+  .dc-play-label--touch { display:none; }
+  @media (hover: none), (pointer: coarse) {
+    .dc-play-label--mouse { display:none; }
+    .dc-play-label--touch { display:inline; }
+  }
+
   @media (max-width: 720px) {
     .dc-container { padding: 0 20px; }
     .dc-masthead-bar { flex-direction: column; align-items: flex-start; gap: 6px; }
@@ -85,8 +122,13 @@
 
         <figure style="margin:0;">
           <div style="background:#f3eddf; padding:14px 14px 0; border:1px solid #cdc1a6; box-shadow:0 18px 40px -22px rgba(50,38,20,0.55), 0 2px 0 #d9cfb5;">
-            <div style="position:relative; aspect-ratio:4/5; overflow:hidden; background:#d8cfb8;" onmouseenter="{{ onHeroVideoEnter }}" onmouseleave="{{ onHeroVideoLeave }}">
+            <div class="dc-hero-media" style="position:relative; aspect-ratio:4/5; overflow:hidden; background:#d8cfb8;" onmouseenter="{{ onHeroVideoEnter }}" onmouseleave="{{ onHeroVideoLeave }}" onclick="{{ onHeroVideoToggle }}">
               <video src="assets/video_04.mp4" poster="assets/04-rita-son.jpg" muted loop playsinline style="width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(0.12) sepia(0.12) contrast(1.02);"></video>
+              <div class="dc-play-hint" aria-hidden="true">
+                <span class="dc-play-circle"></span>
+                <span class="dc-play-label dc-play-label--mouse">Смотреть видео</span>
+                <span class="dc-play-label dc-play-label--touch">Нажмите, чтобы посмотреть</span>
+              </div>
             </div>
             <figcaption style="display:flex; justify-content:space-between; font-family:'PT Mono', monospace; font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color:#8a7d63; padding:11px 2px 13px;">
               <span>Видео · 04</span><span>С сыном</span>
@@ -498,15 +540,25 @@
 }">
 class Component extends DCLogic {
   onHeroVideoEnter = (e) => {
-    const video = e.currentTarget.querySelector('video');
+    const container = e.currentTarget;
+    const video = container.querySelector('video');
     if (video) video.play();
+    container.classList.add('is-playing');
   };
   onHeroVideoLeave = (e) => {
-    const video = e.currentTarget.querySelector('video');
+    const container = e.currentTarget;
+    const video = container.querySelector('video');
     if (video) {
       video.pause();
       video.currentTime = 0;
     }
+    container.classList.remove('is-playing');
+  };
+  onHeroVideoToggle = (e) => {
+    const container = e.currentTarget;
+    const video = container.querySelector('video');
+    if (video && video.paused) video.play();
+    container.classList.add('is-playing');
   };
   renderVals() {
     const p = this.props || {};
@@ -516,6 +568,7 @@ class Component extends DCLogic {
       grainOn: p.grain ?? true,
       onHeroVideoEnter: this.onHeroVideoEnter,
       onHeroVideoLeave: this.onHeroVideoLeave,
+      onHeroVideoToggle: this.onHeroVideoToggle,
     };
   }
 }

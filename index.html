@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=PT+Mono&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #e7dfce; }
+  ::selection { background: rgba(124,47,42,0.18); }
+  @keyframes travel { to { stroke-dashoffset: -160; } }
+  @keyframes wmark { 0%,100% { opacity:.5 } 50% { opacity:.62 } }
+</style>
+</helmet>
+
+<div data-screen-label="Биография · Маргарита Ванифатьевна" style="--accent: {{ accent }}; position:relative; background:#efe8d8; background-image: radial-gradient(120% 80% at 50% -10%, #f4eee0 0%, #efe8d8 38%, #e8e0cd 100%); color:#2b2620; font-family:'PT Serif', Georgia, serif; min-height:100vh; overflow:hidden;">
+
+  <!-- soft archival vignette -->
+  <div style="position:absolute; inset:0; pointer-events:none; box-shadow: inset 0 0 220px rgba(74,60,40,0.16); z-index:1;"></div>
+
+  <sc-if value="{{ grainOn }}" hint-placeholder-val="{{ true }}">
+    <div style="position:fixed; inset:0; pointer-events:none; z-index:60; opacity:0.05; mix-blend-mode:multiply; background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);"></div>
+  </sc-if>
+
+  <div style="position:relative; z-index:2; max-width:1180px; margin:0 auto; padding:0 40px;">
+
+    <!-- ============ ARCHIVE MASTHEAD ============ -->
+    <header style="padding:46px 0 0;">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; font-family:'PT Mono', monospace; font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:#8a7d63; border-bottom:1px solid #c8bda4; padding-bottom:14px;">
+        <span>Семейный архив</span>
+        <span style="letter-spacing:0.16em;">Лист&nbsp;01 · Биография</span>
+        <span>Сибирь · 1914 — 2026</span>
+      </div>
+
+      <!-- HERO -->
+      <div style="display:grid; grid-template-columns:1.05fr 0.95fr; gap:64px; align-items:end; padding:64px 0 30px;">
+        <div>
+          <div style="font-family:'PT Mono', monospace; font-size:13px; letter-spacing:0.3em; text-transform:uppercase; color:var(--accent, #7c2f2a); margin-bottom:26px;">баба Рита</div>
+          <h1 style="font-family:'Playfair Display', serif; font-weight:700; font-size:84px; line-height:0.98; letter-spacing:-0.01em; margin:0; color:#241f19;">Маргарита<br><span style="font-style:italic; font-weight:500;">Ванифатьевна</span></h1>
+          <div style="display:flex; align-items:center; gap:20px; margin-top:30px;">
+            <span style="font-family:'Playfair Display', serif; font-size:30px; color:var(--accent, #7c2f2a);">1927</span>
+            <span style="flex:1; height:1px; background:#c8bda4; max-width:120px;"></span>
+            <span style="font-family:'PT Mono', monospace; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:#8a7d63;">Черемхово · Сибирь</span>
+          </div>
+          <p style="font-family:'PT Serif', serif; font-size:20px; line-height:1.66; color:#4a4236; max-width:30em; margin:34px 0 0; text-wrap:pretty;">Жизнь, с самого начала связанная с тяжёлой судьбой семьи — ссылкой, бедностью, войной и долгим трудовым путём в Сибири. История стойкости, труда, независимого нрава и очень большой сердечности.</p>
+        </div>
+
+        <figure style="margin:0;">
+          <div style="background:#f3eddf; padding:14px 14px 0; border:1px solid #cdc1a6; box-shadow:0 18px 40px -22px rgba(50,38,20,0.55), 0 2px 0 #d9cfb5;">
+            <div style="position:relative; aspect-ratio:4/5; overflow:hidden; background:#d8cfb8;">
+              <img src="assets/03-rita-grandchild.jpg" alt="Маргарита Ванифатьевна" style="width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(0.12) sepia(0.12) contrast(1.02);">
+            </div>
+            <figcaption style="display:flex; justify-content:space-between; font-family:'PT Mono', monospace; font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color:#8a7d63; padding:11px 2px 13px;">
+              <span>Фото · 03</span><span>Баба Рита с внуком</span>
+            </figcaption>
+          </div>
+        </figure>
+      </div>
+    </header>
+
+    <!-- ============ ERA RIBBON (tweakable) ============ -->
+    <sc-if value="{{ showContext }}" hint-placeholder-val="{{ true }}">
+      <section style="margin:18px 0 8px; border-top:1px solid #c8bda4; border-bottom:1px solid #c8bda4; padding:24px 0;">
+        <div style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.26em; text-transform:uppercase; color:#8a7d63; margin-bottom:18px;">Историческая шкала · фон эпохи</div>
+        <div style="display:flex; flex-wrap:wrap; gap:10px 14px;">
+          <span style="font-family:'PT Mono', monospace; font-size:12px; letter-spacing:0.04em; color:#5a5142;"><b style="color:var(--accent,#7c2f2a)">1914</b>&nbsp; Первая мировая</span>
+          <span style="color:#c2b69a;">·</span>
+          <span style="font-family:'PT Mono', monospace; font-size:12px; color:#5a5142;"><b style="color:var(--accent,#7c2f2a)">1917</b>&nbsp; Революция</span>
+          <span style="color:#c2b69a;">·</span>
+          <span style="font-family:'PT Mono', monospace; font-size:12px; color:#5a5142;"><b style="color:var(--accent,#7c2f2a)">1918–22</b>&nbsp; Гражданская война</span>
+          <span style="color:#c2b69a;">·</span>
+          <span style="font-family:'PT Mono', monospace; font-size:12px; color:#5a5142;"><b style="color:var(--accent,#7c2f2a)">1927</b>&nbsp; НЭП</span>
+          <span style="color:#c2b69a;">·</span>
+          <span style="font-family:'PT Mono', monospace; font-size:12px; color:#5a5142;"><b style="color:var(--accent,#7c2f2a)">1930-е</b>&nbsp; Коллективизация</span>
+          <span style="color:#c2b69a;">·</span>
+          <span style="font-family:'PT Mono', monospace; font-size:12px; color:#5a5142;"><b style="color:var(--accent,#7c2f2a)">1941–45</b>&nbsp; Великая Отечественная</span>
+          <span style="color:#c2b69a;">·</span>
+          <span style="font-family:'PT Mono', monospace; font-size:12px; color:#5a5142;"><b style="color:var(--accent,#7c2f2a)">1956</b>&nbsp; ХХ съезд · «оттепель»</span>
+          <span style="color:#c2b69a;">·</span>
+          <span style="font-family:'PT Mono', monospace; font-size:12px; color:#5a5142;"><b style="color:var(--accent,#7c2f2a)">1991</b>&nbsp; Распад СССР</span>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ============ TIMELINE ============ -->
+    <section style="padding:70px 0 30px;">
+      <div style="display:flex; align-items:baseline; gap:18px; margin-bottom:54px;">
+        <h2 style="font-family:'Playfair Display', serif; font-weight:600; font-size:30px; margin:0; color:#241f19;">Хроника жизни</h2>
+        <span style="flex:1; height:1px; background:#c8bda4;"></span>
+        <span style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#8a7d63;">13 глав</span>
+      </div>
+
+      <!-- 01 -->
+      <div style="display:grid; grid-template-columns:160px 1fr; gap:36px;">
+        <div style="text-align:right; padding-top:2px;">
+          <div style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.16em; color:#a89a7d;">Гл. 01</div>
+          <div style="font-family:'Playfair Display', serif; font-size:34px; line-height:1; color:#241f19; margin-top:6px;">1914</div>
+          <div style="font-family:'PT Mono', monospace; font-size:10.5px; letter-spacing:0.08em; color:var(--accent,#7c2f2a); margin-top:8px;">ЧЕЛЯБИНСК</div>
+        </div>
+        <div style="border-left:1px solid #cdc1a6; padding:0 0 60px 44px; position:relative;">
+          <div style="position:absolute; left:-7px; top:6px; width:13px; height:13px; border-radius:50%; background:#efe8d8; border:2px solid var(--accent,#7c2f2a);"></div>
+          <h3 style="font-family:'Playfair Display', serif; font-weight:600; font-size:26px; margin:0 0 14px; color:#241f19;">Этап в Сибирь</h3>
+          <p style="font-size:18.5px; line-height:1.72; color:#403a30; max-width:34em; margin:0 0 16px; text-wrap:pretty;">Ванифатий Мартирьевич Перевалов жил в Челябинске и, по семейным рассказам, состоял в политической группе. После ареста группу осудили на вечную каторгу в Сибирь — этапом их гнали пешком до Черемхова. Жёны не пошли за осуждёнными. Кроме одной: Любовь Викторовна отправилась вслед за мужем — пешком, рядом с этапом, с маленькой дочерью Ниной на руках.</p>
+          <blockquote style="margin:22px 0 0; padding:4px 0 4px 24px; border-left:3px solid var(--accent,#7c2f2a); font-family:'Playfair Display', serif; font-style:italic; font-size:21px; line-height:1.5; color:#3a342a; max-width:30em;">«Им присудили вечную каторгу в Сибирь. И вот они из Челябинска шли пешком до Черемхова… Одна мамочка с Ниной на руках шла вместе с этим этапом.»</blockquote>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div style="display:grid; grid-template-columns:160px 1fr; gap:36px;">
+        <div style="text-align:right; padding-top:2px;">
+          <div style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.16em; color:#a89a7d;">Гл. 02</div>
+          <div style="font-family:'Playfair Display', serif; font-size:34px; line-height:1; color:#241f19; margin-top:6px;">~1915</div>
+          <div style="font-family:'PT Mono', monospace; font-size:10.5px; letter-spacing:0.08em; color:var(--accent,#7c2f2a); margin-top:8px;">ЧЕРЕМХОВО</div>
+        </div>
+        <div style="border-left:1px solid #cdc1a6; padding:0 0 60px 44px; position:relative;">
+          <div style="position:absolute; left:-7px; top:6px; width:13px; height:13px; border-radius:50%; background:#efe8d8; border:2px solid var(--accent,#7c2f2a);"></div>
+          <h3 style="font-family:'Playfair Display', serif; font-weight:600; font-size:26px; margin:0 0 14px; color:#241f19;">Отстойный вагон</h3>
+          <p style="font-size:18.5px; line-height:1.72; color:#403a30; max-width:34em; margin:0 0 16px; text-wrap:pretty;">Когда добрались до Черемхова, легче не стало: семья и другие ссыльные поселились в отстойном вагоне. Позже Ванифатия забрали на военную переподготовку, и он исчез из жизни семьи. Лишь много лет спустя стало известно, что он вернулся в Челябинск, снова женился и работал начальником вокзала. Любовь Викторовна осталась одна поднимать детей.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ MIGRATION MAP PLATE (full-bleed) ============ -->
+  <section style="position:relative; z-index:2; background:#e4d8bd; background-image: radial-gradient(140% 100% at 20% 0%, #ece2cb 0%, #e2d6ba 55%, #d8caaa 100%); border-top:1px solid #c4b793; border-bottom:1px solid #c4b793; padding:64px 0;">
+    <div style="max-width:1180px; margin:0 auto; padding:0 40px;">
+      <div style="display:flex; align-items:baseline; gap:18px; margin-bottom:10px;">
+        <div style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.26em; text-transform:uppercase; color:#9a8a64;">Картографический лист · приложение</div>
+      </div>
+      <h2 style="font-family:'Playfair Display', serif; font-weight:600; font-size:38px; margin:0 0 6px; color:#2a2317;">Путь семьи: с запада на восток</h2>
+      <p style="font-family:'PT Serif', serif; font-size:18px; line-height:1.6; color:#5a4f38; max-width:40em; margin:0 0 30px;">Из Челябинска на Урале — этапом, пешком, через всю Сибирь — до Черемхова в Прибайкалье. Около 3 500 километров, пройденных вслед за осуждённым мужем с ребёнком на руках.</p>
+
+      <!-- MAP -->
+      <div style="position:relative; width:100%; border:1px solid #b9a87c; background:#ece1c6; box-shadow: inset 0 0 90px rgba(120,98,54,0.18), 0 16px 40px -26px rgba(60,46,20,0.5);">
+        <svg viewBox="0 0 1000 480" style="display:block; width:100%; height:auto;" font-family="'PT Mono', monospace">
+          <!-- graticule -->
+          <g stroke="#cdbd94" stroke-width="1" opacity="0.55">
+            <line x1="125" y1="0" x2="125" y2="480"/><line x1="250" y1="0" x2="250" y2="480"/>
+            <line x1="375" y1="0" x2="375" y2="480"/><line x1="500" y1="0" x2="500" y2="480"/>
+            <line x1="625" y1="0" x2="625" y2="480"/><line x1="750" y1="0" x2="750" y2="480"/>
+            <line x1="875" y1="0" x2="875" y2="480"/>
+            <line x1="0" y1="96" x2="1000" y2="96"/><line x1="0" y1="192" x2="1000" y2="192"/>
+            <line x1="0" y1="288" x2="1000" y2="288"/><line x1="0" y1="384" x2="1000" y2="384"/>
+          </g>
+          <!-- region watermarks -->
+          <g fill="#b6a071" opacity="0.55" font-size="20" letter-spacing="6" style="animation:wmark 7s ease-in-out infinite;">
+            <text x="120" y="120">УРАЛ</text>
+            <text x="360" y="158" font-size="22" letter-spacing="7">ЗАПАДНАЯ&#160;СИБИРЬ</text>
+            <text x="648" y="118" font-size="20" letter-spacing="5">ВОСТОЧНАЯ&#160;СИБИРЬ</text>
+            <text x="800" y="420" font-size="17" letter-spacing="5">ПРИБАЙКАЛЬЕ</text>
+          </g>
+          <!-- faint river hints -->
+          <g stroke="#c3b489" fill="none" stroke-width="2" opacity="0.55" stroke-linecap="round">
+            <path d="M250,470 C 300,360 280,300 360,250 S 470,180 520,60"/>
+            <path d="M640,470 C 660,380 700,330 720,250 S 700,140 760,40"/>
+          </g>
+
+          <!-- ROUTE: Chelyabinsk -> Cheremkhovo -->
+          <path d="M150,232 C 250,330 300,330 350,318 S 520,210 600,236 S 740,300 808,286" fill="none" stroke="#7c2f2a" stroke-opacity="0.32" stroke-width="9" stroke-linecap="round"/>
+          <path d="M150,232 C 250,330 300,330 350,318 S 520,210 600,236 S 740,300 808,286" fill="none" stroke="var(--accent,#7c2f2a)" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="2 14" style="animation:travel 5.5s linear infinite;"/>
+
+          <!-- arrow head near Cheremkhovo -->
+          <path d="M796,272 L816,286 L795,299" fill="none" stroke="var(--accent,#7c2f2a)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <!-- waypoint dots -->
+          <circle cx="350" cy="318" r="3.5" fill="#8a7350"/>
+          <circle cx="600" cy="236" r="3.5" fill="#8a7350"/>
+
+          <!-- origin: Chelyabinsk -->
+          <circle cx="150" cy="232" r="10" fill="none" stroke="var(--accent,#7c2f2a)" stroke-width="2.5"/>
+          <circle cx="150" cy="232" r="3.4" fill="var(--accent,#7c2f2a)"/>
+
+          <!-- destination: Cheremkhovo -->
+          <circle cx="808" cy="286" r="13" fill="none" stroke="var(--accent,#7c2f2a)" stroke-width="2.5"/>
+          <circle cx="808" cy="286" r="5" fill="var(--accent,#7c2f2a)"/>
+
+          <!-- later-life cluster near Cheremkhovo -->
+          <circle cx="860" cy="250" r="3" fill="#6f5e3e"/>
+          <circle cx="852" cy="320" r="3" fill="#6f5e3e"/>
+          <circle cx="900" cy="300" r="3" fill="#6f5e3e"/>
+
+          <!-- labels -->
+          <g fill="#3a3120" font-size="17" font-weight="bold" letter-spacing="1">
+            <text x="150" y="212" text-anchor="middle">ЧЕЛЯБИНСК</text>
+            <text x="808" y="266" text-anchor="middle">ЧЕРЕМХОВО</text>
+          </g>
+          <g fill="#7c2f2a" font-size="11" letter-spacing="1">
+            <text x="150" y="262" text-anchor="middle" fill="#8a7350">1914 · отправление</text>
+            <text x="808" y="316" text-anchor="middle" fill="#8a7350">~1915 · прибытие</text>
+          </g>
+          <g fill="#6f5e3e" font-size="11" letter-spacing="0.5">
+            <text x="884" y="244">Ангарск</text>
+            <text x="864" y="338">Тулун</text>
+            <text x="912" y="304">Мальта</text>
+          </g>
+
+          <!-- compass -->
+          <g transform="translate(930,70)">
+            <circle r="26" fill="none" stroke="#a8946a" stroke-width="1.5"/>
+            <path d="M0,-22 L5,0 L0,18 L-5,0 Z" fill="var(--accent,#7c2f2a)"/>
+            <path d="M0,22 L5,0 L0,-18 L-5,0 Z" fill="#8a7350"/>
+            <text x="0" y="-30" text-anchor="middle" font-size="11" fill="#6f5e3e">С</text>
+            <text x="34" y="4" text-anchor="middle" font-size="11" fill="#6f5e3e">В</text>
+          </g>
+
+          <!-- scale bar -->
+          <g transform="translate(70,440)">
+            <line x1="0" y1="0" x2="160" y2="0" stroke="#6f5e3e" stroke-width="2"/>
+            <line x1="0" y1="-5" x2="0" y2="5" stroke="#6f5e3e" stroke-width="2"/>
+            <line x1="80" y1="-5" x2="80" y2="5" stroke="#6f5e3e" stroke-width="2"/>
+            <line x1="160" y1="-5" x2="160" y2="5" stroke="#6f5e3e" stroke-width="2"/>
+            <text x="0" y="20" font-size="11" fill="#6f5e3e">0</text>
+            <text x="150" y="20" font-size="11" fill="#6f5e3e">≈ 3 500 км</text>
+          </g>
+        </svg>
+      </div>
+      <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.1em; color:#9a8a64; margin-top:14px;">
+        <span>— — —&nbsp; маршрут этапа · пешком</span>
+        <span>Прибайкалье — место взрослой жизни: Черемхово, Тулун, Мальта, Ангарск</span>
+      </div>
+    </div>
+  </section>
+
+  <div style="position:relative; z-index:2; max-width:1180px; margin:0 auto; padding:0 40px;">
+    <section style="padding:70px 0 30px;">
+
+      <!-- 03 -->
+      <div style="display:grid; grid-template-columns:160px 1fr; gap:36px;">
+        <div style="text-align:right; padding-top:2px;">
+          <div style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.16em; color:#a89a7d;">Гл. 03</div>
+          <div style="font-family:'Playfair Display', serif; font-size:30px; line-height:1.04; color:#241f19; margin-top:6px;">6 июня<br>1927</div>
+          <div style="font-family:'PT Mono', monospace; font-size:10.5px; letter-spacing:0.08em; color:var(--accent,#7c2f2a); margin-top:8px;">РОЖДЕНИЕ</div>
+        </div>
+        <div style="border-left:1px solid #cdc1a6; padding:0 0 60px 44px; position:relative;">
+          <div style="position:absolute; left:-7px; top:6px; width:13px; height:13px; border-radius:50%; background:#efe8d8; border:2px solid var(--accent,#7c2f2a);"></div>
+          <h3 style="font-family:'Playfair Display', serif; font-weight:600; font-size:26px; margin:0 0 14px; color:#241f19;">Красный уголок</h3>
+          <p style="font-size:18.5px; line-height:1.72; color:#403a30; max-width:34em; margin:0 0 16px; text-wrap:pretty;">Маргарита родилась в Черемхове. Детство было очень бедным: мать работала на складе, жилья почти не было — одно время жили в красном уголке, приспособленном помещении с железной печкой посреди комнаты. Уходя на работу, мать оставляла маленькую Маргариту в ванне поближе к теплу, забегала подбросить дров, наспех кормила и снова уходила.</p>
+          <blockquote style="margin:22px 0 0; padding:4px 0 4px 24px; border-left:3px solid var(--accent,#7c2f2a); font-family:'Playfair Display', serif; font-style:italic; font-size:21px; line-height:1.5; color:#3a342a; max-width:30em;">«Мама меня ростила так трудно… а мы в красном уголке жили. У нас не было квартиры.»</blockquote>
+        </div>
+      </div>
+
+      <!-- 04 -->
+      <div style="display:grid; grid-template-columns:160px 1fr; gap:36px;">
+        <div style="text-align:right; padding-top:2px;">
+          <div style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.16em; color:#a89a7d;">Гл. 04</div>
+          <div style="font-family:'Playfair Display', serif; font-size:34px; line-height:1; color:#241f19; margin-top:6px;">1930-е</div>
+          <div style="font-family:'PT Mono', monospace; font-size:10.5px; letter-spacing:0.08em; color:var(--accent,#7c2f2a); margin-top:8px;">СЁСТРЫ</div>
+        </div>
+        <div style="border-left:1px solid #cdc1a6; padding:0 0 60px 44px; position:relative;">
+          <div style="position:absolute; left:-7px; top:6px; width:13px; height:13px; border-radius:50%; background:#efe8d8; border:2px solid var(--accent,#7c2f2a);"></div>
+          <h3 style="font-family:'Playfair Display', serif; font-weight:600; font-size:26px; margin:0 0 14px; color:#241f19;">Нина, Зоя, Анечка</h3>
+          <p style="font-size:18.5px; line-height:1.72; color:#403a30; max-width:34em; margin:0 0 16px; text-wrap:pretty;">У Маргариты было несколько старших сестёр. Семья жила собранно, помогая друг другу. Зоя работала воспитательницей и брала Маргариту с собой на лето к реке — там девочка чуть не утонула и на всю жизнь стала бояться воды. Анна выучилась на бухгалтера и стала заметной фигурой в Тулуне.</p>
+          <blockquote style="margin:22px 0 0; padding:4px 0 4px 24px; border-left:3px solid var(--accent,#7c2f2a); font-family:'Playfair Display', serif; font-style:italic; font-size:21px; line-height:1.5; color:#3a342a; max-width:30em;">«Почему я боюсь до сих пор воды? Я очень боюсь воды.»</blockquote>
+        </div>
+      </div>
+
+      <!-- 05 -->
+      <div style="display:grid; grid-template-columns:160px 1fr; gap:36px;">
+        <div style="text-align:right; padding-top:2px;">
+          <div style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.16em; color:#a89a7d;">Гл. 05</div>
+          <div style="font-family:'Playfair Display', serif; font-size:34px; line-height:1; color:#241f19; margin-top:6px;">1941</div>
+          <div style="font-family:'PT Mono', monospace; font-size:10.5px; letter-spacing:0.08em; color:var(--accent,#7c2f2a); margin-top:8px;">ВОЙНА · 14 ЛЕТ</div>
+        </div>
+        <div style="border-left:1px solid #cdc1a6; padding:0 0 60px 44px; position:relative;">
+          <div style="position:absolute; left:-7px; top:6px; width:13px; height:13px; border-radius:50%; background:#efe8d8; border:2px solid var(--accent,#7c2f2a);"></div>
+          <h3 style="font-family:'Playfair Display', serif; font-weight:600; font-size:26px; margin:0 0 14px; color:#241f19;">Голодные годы</h3>
+          <p style="font-size:18.5px; line-height:1.72; color:#403a30; max-width:34em; margin:0 0 16px; text-wrap:pretty;">В начале войны ей было четырнадцать. Голод стал постоянным фоном жизни: крошечные пайки хлеба, печёная картошка, маленький Игорь, что ночью выковыривал мякиш из спрятанного хлеба. Эти годы она пересказывала не как историю, а как личный опыт времени, когда люди действительно умирали от голода.</p>
+          <blockquote style="margin:22px 0 0; padding:4px 0 4px 24px; border-left:3px solid var(--accent,#7c2f2a); font-family:'Playfair Display', serif; font-style:italic; font-size:21px; line-height:1.5; color:#3a342a; max-width:30em;">«Война шла, голод… С голоду люди умирали, есть нечего было.»</blockquote>
+        </div>
+      </div>
+
+      <!-- 06 -->
+      <div style="display:grid; grid-template-columns:160px 1fr; gap:36px;">
+        <div style="text-align:right; padding-top:2px;">
+          <div style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.16em; color:#a89a7d;">Гл. 06</div>
+          <div style="font-family:'Playfair Display', serif; font-size:30px; line-height:1.04; color:#241f19; margin-top:6px;">Военные<br>годы</div>
+          <div style="font-family:'PT Mono', monospace; font-size:10.5px; letter-spacing:0.08em; color:var(--accent,#7c2f2a); margin-top:8px;">ТРУД</div>
+        </div>
+        <div style="border-left:1px solid #cdc1a6; padding:0 0 60px 44px; position:relative;">
+          <div style="position:absolute; left:-7px; top:6px; width:13px; height:13px; border-radius:50%; background:#efe8d8; border:2px solid var(--accent,#7c2f2a);"></div>
+          <h3 style="font-family:'Playfair Display', serif; font-weight:600; font-size:26px; margin:0 0 14px; color:#241f19;">Четырнадцать часов в сутки</h3>
+          <p style="font-size:18.5px; line-height:1.72; color:#403a30; max-width:34em; margin:0 0 16px; text-wrap:pretty;">Маргарита работала у Анечки в бухгалтерии. После двенадцатичасовой смены ещё несколько часов перелопачивали зерно на сушилке, чтобы оно не загорелось до посевной. В выходные отправляли в совхозы — полоть, копать картошку, рубить капусту. Подростки и женщины жили в режиме постоянной мобилизации.</p>
+          <blockquote style="margin:22px 0 0; padding:4px 0 4px 24px; border-left:3px solid var(--accent,#7c2f2a); font-family:'Playfair Display', serif; font-style:italic; font-size:21px; line-height:1.5; color:#3a342a; max-width:30em;">«Мы после работы двенадцать часов отработаем… и идём лопатить зерно… получалось четырнадцать-пятнадцать часов в сутки.»</blockquote>
+        </div>
+      </div>
+
+      <!-- 07 -->
+      <div style="display:grid; grid-template-columns:160px 1fr; gap:36px;">
+        <div style="text-align:right; padding-top:2px;">
+          <div style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.16em; color:#a89a7d;">Гл. 07</div>
+          <div style="font-family:'Playfair Display', serif; font-size:34px; line-height:1; color:#241f19; margin-top:6px;">1946</div>
+          <div style="font-family:'PT Mono', monospace; font-size:10.5px; letter-spacing:0.08em; color:var(--accent,#7c2f2a); margin-top:8px;">ТЕХНИКУМ</div>
+        </div>
+        <div style="border-left:1px solid #cdc1a6; padding:0 0 60px 44px; position:relative;">
+          <div style="position:absolute; left:-7px; top:6px; width:13px; height:13px; border-radius:50%; background:#efe8d8; border:2px solid var(--accent,#7c2f2a);"></div>
+          <h3 style="font-family:'Playfair Display', serif; font-weight:600; font-size:26px; margin:0 0 14px; color:#241f19;">Вольная девчонка</h3>
+          <p style="font-size:18.5px; line-height:1.72; color:#403a30; max-width:34em; margin:0 0 16px; text-wrap:pretty;">Маргарита росла живой, смелой и своенравной: дралась с мальчишками, могла перепрыгнуть через забор. После выговора на работе она просто уволилась и в 1946 году поступила в горный техникум. Учёба длилась четыре с половиной года — программа была почти институтской.</p>
+          <blockquote style="margin:22px 0 0; padding:4px 0 4px 24px; border-left:3px solid var(--accent,#7c2f2a); font-family:'Playfair Display', serif; font-style:italic; font-size:21px; line-height:1.5; color:#3a342a; max-width:30em;">«Хулиганка была какая-то, я не знаю, вольная такая девчонка.»</blockquote>
+        </div>
+      </div>
+
+      <!-- 08 -->
+      <div style="display:grid; grid-template-columns:160px 1fr; gap:36px;">
+        <div style="text-align:right; padding-top:2px;">
+          <div style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.16em; color:#a89a7d;">Гл. 08</div>
+          <div style="font-family:'Playfair Display', serif; font-size:34px; line-height:1; color:#241f19; margin-top:6px;">~1950</div>
+          <div style="font-family:'PT Mono', monospace; font-size:10.5px; letter-spacing:0.08em; color:var(--accent,#7c2f2a); margin-top:8px;">ШАХТА</div>
+        </div>
+        <div style="border-left:1px solid #cdc1a6; padding:0 0 60px 44px; position:relative;">
+          <div style="position:absolute; left:-7px; top:6px; width:13px; height:13px; border-radius:50%; background:#efe8d8; border:2px solid var(--accent,#7c2f2a);"></div>
+          <h3 style="font-family:'Playfair Display', serif; font-weight:600; font-size:26px; margin:0 0 14px; color:#241f19;">Вагоны с углём</h3>
+          <p style="font-size:18.5px; line-height:1.72; color:#403a30; max-width:34em; margin:0; text-wrap:pretty;">После техникума Маргарита пошла работать на шахту. Работа сменная — и днём, и ночью: она принимала вагоны с углём от железнодорожного инспектора и отправляла их дальше по назначению. Так завершился её путь от полуголодной девочки военных лет к специалисту с техническим образованием.</p>
+          <blockquote style="margin:22px 0 0; padding:4px 0 4px 24px; border-left:3px solid var(--accent,#7c2f2a); font-family:'Playfair Display', serif; font-style:italic; font-size:21px; line-height:1.5; color:#3a342a; max-width:30em;">«Закончила я и пошла работать на шахту по сменам… День и ночь работали.»</blockquote>
+        </div>
+      </div>
+
+      <!-- 09 (with photo) -->
+      <div style="display:grid; grid-template-columns:160px 1fr; gap:36px;">
+        <div style="text-align:right; padding-top:2px;">
+          <div style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.16em; color:#a89a7d;">Гл. 09</div>
+          <div style="font-family:'Playfair Display', serif; font-size:34px; line-height:1; color:#241f19; margin-top:6px;">~1951</div>
+          <div style="font-family:'PT Mono', monospace; font-size:10.5px; letter-spacing:0.08em; color:var(--accent,#7c2f2a); margin-top:8px;">МАЛЬТА</div>
+        </div>
+        <div style="border-left:1px solid #cdc1a6; padding:0 0 60px 44px; position:relative;">
+          <div style="position:absolute; left:-7px; top:6px; width:13px; height:13px; border-radius:50%; background:#efe8d8; border:2px solid var(--accent,#7c2f2a);"></div>
+          <h3 style="font-family:'Playfair Display', serif; font-weight:600; font-size:26px; margin:0 0 14px; color:#241f19;">Валера Герасимов</h3>
+          <p style="font-size:18.5px; line-height:1.72; color:#403a30; max-width:34em; margin:0 0 16px; text-wrap:pretty;">В отпуске на Мальте состоялась встреча, определившая её судьбу. Валера был старше, прошёл фронт, был ранен в ногу и слегка прихрамывал — но прекрасно танцевал. Он жил в Ангарске, она — в Черемхове; он ездил к ней, они ходили в кино и на танцы. Примерно через год он решил жениться.</p>
+          <blockquote style="margin:22px 0 0; padding:4px 0 4px 24px; border-left:3px solid var(--accent,#7c2f2a); font-family:'Playfair Display', serif; font-style:italic; font-size:21px; line-height:1.5; color:#3a342a; max-width:30em;">«Он фронт прошёл… ножка у него была ранена, он немножко подхрамывал, но танцевал так здорово.»</blockquote>
+        </div>
+      </div>
+
+      <!-- 10 (with photo 05) -->
+      <div style="display:grid; grid-template-columns:160px 1fr; gap:36px;">
+        <div style="text-align:right; padding-top:2px;">
+          <div style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.16em; color:#a89a7d;">Гл. 10</div>
+          <div style="font-family:'Playfair Display', serif; font-size:34px; line-height:1; color:#241f19; margin-top:6px;">~1952</div>
+          <div style="font-family:'PT Mono', monospace; font-size:10.5px; letter-spacing:0.08em; color:var(--accent,#7c2f2a); margin-top:8px;">СЕМЬЯ</div>
+        </div>
+        <div style="border-left:1px solid #cdc1a6; padding:0 0 60px 44px; position:relative;">
+          <div style="position:absolute; left:-7px; top:6px; width:13px; height:13px; border-radius:50%; background:#efe8d8; border:2px solid var(--accent,#7c2f2a);"></div>
+          <h3 style="font-family:'Playfair Display', serif; font-weight:600; font-size:26px; margin:0 0 18px; color:#241f19;">«Бросился ко мне на руки»</h3>
+          <div style="display:grid; grid-template-columns:1fr 280px; gap:38px; align-items:start;">
+            <div>
+              <p style="font-size:18.5px; line-height:1.72; color:#403a30; margin:0 0 16px; text-wrap:pretty;">У Валеры уже был сын Володя от первого брака. Когда мальчика привезли сватать Маргариту, он сразу признал её своей мамой и бросился на руки — три ночи подряд не отпускал от себя. Маргарита приняла его как родного, с теплом и нежностью. В этом — её способность сразу включаться в заботу и семейную близость.</p>
+              <blockquote style="margin:22px 0 0; padding:4px 0 4px 24px; border-left:3px solid var(--accent,#7c2f2a); font-family:'Playfair Display', serif; font-style:italic; font-size:21px; line-height:1.5; color:#3a342a;">«Мамочка, а почему ты меня на ручки не берёшь?.. И бросился ко мне на руки. Три ночи не отпускал.»</blockquote>
+            </div>
+            <figure style="margin:0;">
+              <div style="background:#f3eddf; padding:11px 11px 0; border:1px solid #cdc1a6; box-shadow:0 14px 30px -20px rgba(50,38,20,0.55);">
+                <div style="aspect-ratio:4/5; overflow:hidden; background:#d8cfb8;">
+                  <img src="assets/05-rita-child-scarf.jpg" alt="Маргарита с ребёнком" style="width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(0.1) sepia(0.1) contrast(1.02);">
+                </div>
+                <figcaption style="display:flex; justify-content:space-between; font-family:'PT Mono', monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#8a7d63; padding:9px 2px 11px;"><span>Фото · 05</span><span>Материнство</span></figcaption>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11 (with photo 04) -->
+      <div style="display:grid; grid-template-columns:160px 1fr; gap:36px;">
+        <div style="text-align:right; padding-top:2px;">
+          <div style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.16em; color:#a89a7d;">Гл. 11</div>
+          <div style="font-family:'Playfair Display', serif; font-size:30px; line-height:1.04; color:#241f19; margin-top:6px;">Большая<br>семья</div>
+          <div style="font-family:'PT Mono', monospace; font-size:10.5px; letter-spacing:0.08em; color:var(--accent,#7c2f2a); margin-top:8px;">АНДРЮША</div>
+        </div>
+        <div style="border-left:1px solid #cdc1a6; padding:0 0 60px 44px; position:relative;">
+          <div style="position:absolute; left:-7px; top:6px; width:13px; height:13px; border-radius:50%; background:#efe8d8; border:2px solid var(--accent,#7c2f2a);"></div>
+          <h3 style="font-family:'Playfair Display', serif; font-weight:600; font-size:26px; margin:0 0 18px; color:#241f19;">Чувство родства</h3>
+          <div style="display:grid; grid-template-columns:280px 1fr; gap:38px; align-items:start;">
+            <figure style="margin:0;">
+              <div style="background:#f3eddf; padding:11px 11px 0; border:1px solid #cdc1a6; box-shadow:0 14px 30px -20px rgba(50,38,20,0.55);">
+                <div style="aspect-ratio:4/5; overflow:hidden; background:#d8cfb8;">
+                  <img src="assets/04-rita-son.jpg" alt="Маргарита с сыном" style="width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(0.1) sepia(0.1) contrast(1.02);">
+                </div>
+                <figcaption style="display:flex; justify-content:space-between; font-family:'PT Mono', monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#8a7d63; padding:9px 2px 11px;"><span>Фото · 04</span><span>С сыном</span></figcaption>
+              </div>
+            </figure>
+            <div>
+              <p style="font-size:18.5px; line-height:1.72; color:#403a30; margin:0; text-wrap:pretty;">Дальнейшая жизнь была связана с большой разветвлённой семьёй — Маргарита помнила судьбы братьев, сестёр, племянников и детей так подробно, будто всё было вчера. В поздние годы рядом был сын Андрей, которого она звала Андрюшей: он работал, помогал по дому, привозил продукты, поддерживал домашний уклад. Старость проходила не в одиночестве, а внутри живой семейной связи.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div style="display:grid; grid-template-columns:160px 1fr; gap:36px;">
+        <div style="text-align:right; padding-top:2px;">
+          <div style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.16em; color:#a89a7d;">Гл. 12</div>
+          <div style="font-family:'Playfair Display', serif; font-size:34px; line-height:1; color:#241f19; margin-top:6px;">1956</div>
+          <div style="font-family:'PT Mono', monospace; font-size:10.5px; letter-spacing:0.08em; color:var(--accent,#7c2f2a); margin-top:8px;">ПАМЯТЬ</div>
+        </div>
+        <div style="border-left:1px solid #cdc1a6; padding:0 0 60px 44px; position:relative;">
+          <div style="position:absolute; left:-7px; top:6px; width:13px; height:13px; border-radius:50%; background:#efe8d8; border:2px solid var(--accent,#7c2f2a);"></div>
+          <h3 style="font-family:'Playfair Display', serif; font-weight:600; font-size:26px; margin:0 0 14px; color:#241f19;">Гена</h3>
+          <p style="font-size:18.5px; line-height:1.72; color:#403a30; max-width:34em; margin:0 0 16px; text-wrap:pretty;">Одной из самых трагических историй была судьба племянника Гены, сына Анны. Он служил на флоте, на подводной лодке, а перед этим спас Веру — свою будущую жену, которую родители-сектанты заперли в подвале за вступление в комсомол. У них родилась дочь Оля. Гену перевели на другую лодку для особого задания; лодка погибла в море. Эту потерю Маргарита помнила спустя десятилетия с такой болью, словно случилось совсем недавно.</p>
+          <blockquote style="margin:22px 0 0; padding:4px 0 4px 24px; border-left:3px solid var(--accent,#7c2f2a); font-family:'Playfair Display', serif; font-style:italic; font-size:21px; line-height:1.5; color:#3a342a; max-width:30em;">«И он оказался один на этой чужой лодке… лодку взорвали, и она по частям разлетелась. Вот так вот он погиб.»</blockquote>
+        </div>
+      </div>
+
+      <!-- 13 -->
+      <div style="display:grid; grid-template-columns:160px 1fr; gap:36px;">
+        <div style="text-align:right; padding-top:2px;">
+          <div style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.16em; color:#a89a7d;">Гл. 13</div>
+          <div style="font-family:'Playfair Display', serif; font-size:30px; line-height:1.04; color:#241f19; margin-top:6px;">Наши<br>дни</div>
+          <div style="font-family:'PT Mono', monospace; font-size:10.5px; letter-spacing:0.08em; color:var(--accent,#7c2f2a); margin-top:8px;">НАСЛЕДИЕ</div>
+        </div>
+        <div style="padding:0 0 10px 44px; position:relative;">
+          <div style="position:absolute; left:-7px; top:6px; width:13px; height:13px; border-radius:50%; background:var(--accent,#7c2f2a); border:2px solid var(--accent,#7c2f2a);"></div>
+          <h3 style="font-family:'Playfair Display', serif; font-weight:600; font-size:26px; margin:0 0 14px; color:#241f19;">Внутренняя сила</h3>
+          <p style="font-size:18.5px; line-height:1.72; color:#403a30; max-width:36em; margin:0 0 8px; text-wrap:pretty;">Стойкость, трудолюбие, независимый нрав и очень большая сердечность. Она выросла в нужде, пережила войну подростком, много работала, получила образование и создала семью. В её воспоминаниях нет жалобливости: даже самые тяжёлые эпизоды она рассказывает просто, по-деловому, часто с живой интонацией и неожиданной улыбкой.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ LEGACY GALLERY ============ -->
+  <section style="position:relative; z-index:2; background:#26201a; color:#ece3d2; padding:78px 0;">
+    <div style="max-width:1180px; margin:0 auto; padding:0 40px;">
+      <div style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.26em; text-transform:uppercase; color:#b39a6e; margin-bottom:14px;">Семья · поколения</div>
+      <h2 style="font-family:'Playfair Display', serif; font-weight:600; font-size:40px; margin:0 0 40px; color:#f3ead8; max-width:16em;">Большая семья, которую она помнила по именам</h2>
+      <div style="display:grid; grid-template-columns:1.15fr 0.85fr; gap:32px; align-items:start;">
+        <figure style="margin:0;">
+          <div style="background:#1c1712; padding:14px; border:1px solid #43392c;">
+            <div style="aspect-ratio:5/4; overflow:hidden; background:#322a20;">
+              <img src="assets/02-family-modern.jpg" alt="Семья на веранде" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+          </div>
+          <figcaption style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.1em; color:#a08c66; padding:12px 2px 0; display:flex; justify-content:space-between;"><span>Фото · 02</span><span>Несколько поколений · наши дни</span></figcaption>
+        </figure>
+        <figure style="margin:0;">
+          <div style="background:#1c1712; padding:14px; border:1px solid #43392c;">
+            <div style="aspect-ratio:4/5; overflow:hidden; background:#322a20;">
+              <img src="assets/01-family-portrait.jpg" alt="Семейный портрет" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+          </div>
+          <figcaption style="font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.1em; color:#a08c66; padding:12px 2px 0; display:flex; justify-content:space-between;"><span>Фото · 01</span><span>Семейный портрет</span></figcaption>
+        </figure>
+      </div>
+
+      <blockquote style="margin:60px auto 0; max-width:18em; text-align:center; font-family:'Playfair Display', serif; font-style:italic; font-size:34px; line-height:1.3; color:#f3ead8;">«Вот такие дела.»</blockquote>
+      <div style="width:54px; height:1px; background:#7a6648; margin:30px auto 0;"></div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="position:relative; z-index:2; background:#efe8d8; padding:34px 0;">
+    <div style="max-width:1180px; margin:0 auto; padding:0 40px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; font-family:'PT Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#9a8d70;">
+      <span>Семейный архив</span>
+      <span>Маргарита Ванифатьевна · баба Рита</span>
+      <span>1927 — …</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;accent&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#7c2f2a&quot;, &quot;options&quot;: [&quot;#7c2f2a&quot;, &quot;#3a4a63&quot;, &quot;#5c5530&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Оформление&quot; },
+  &quot;showContext&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Оформление&quot; },
+  &quot;grain&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Оформление&quot; }
+}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props || {};
+    return {
+      accent: p.accent ?? '#7c2f2a',
+      showContext: p.showContext ?? true,
+      grainOn: p.grain ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>
